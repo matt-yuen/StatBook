@@ -1,6 +1,7 @@
 import React from "react";
 import styled from 'styled-components';
 import FacebookLogin from 'react-facebook-login';
+import { withRouter } from 'react-router-dom';
 
 const LoginContainer = styled.div`
   display: flex;
@@ -15,11 +16,12 @@ const Logo = styled.div`
   padding-bottom: 20px;
 `;
 
-const responseFacebook = (response) => {
-  console.log(response);
-}
+function Login(props) {
+  const responseFacebook = (response) => {
+    console.log(response);
+    props.history.push('/home');
+  }
 
-function Login() {
   return (
     <LoginContainer>
       <Logo>
@@ -28,9 +30,8 @@ function Login() {
       <FacebookLogin
         appId="402369167087579"
         autoLoad={false}
-        fields="name,email,picture"
+        fields="name,email,picture,user_posts,user_likes"
         icon="fa-facebook-square fa-lg"
-        // onClick={componentClicked}
         callback={responseFacebook} 
         textButton="Log in"
         version="4.0"
@@ -39,4 +40,4 @@ function Login() {
   )
 }
 
-export default Login
+export default withRouter(Login)
