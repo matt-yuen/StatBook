@@ -19,7 +19,7 @@ const Logo = styled.div`
 function Login(props) {
   const responseFacebook = (response) => {
     console.log(response);
-    props.history.push('/home');
+    props.history.push('/home', response);
   }
 
   return (

@@ -5,6 +5,7 @@ const Header = styled.div`
   display: flex;
   justify-content: space-between;
   font-size: 24px;
+  margin-top: 35px;
 `;
 
 const WelcomeMessage = styled.div`;
@@ -13,11 +14,11 @@ const WelcomeMessage = styled.div`;
 const Logo = styled.div`
 `;
 
-function Home() {
+function Home(props) {
   return (
     <Header>
       <WelcomeMessage>
-        Welcome back!
+        Welcome back, {props.location.state.name}!
       </WelcomeMessage>
       <Logo>
         StatBook
