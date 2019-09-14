@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from 'axios';
 import styled from 'styled-components';
 import { Card, CardContent } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
@@ -35,6 +36,19 @@ const ProfilePicture = styled.div`
 
 function ProfileCard() {
   const classes = useStyles();
+  let token = "";
+  
+  axios.get(`https://graph.facebook.com/___?fields=picture`, {
+    headers: {
+      Authorization: 'Bearer ' + token,
+    }
+  })
+  .then(function (response) {
+    console.log(response);
+  })
+  .catch(function (error) {
+    console.log(error);
+  });
 
   return (
     <Card className={classes.card}>
@@ -43,7 +57,6 @@ function ProfileCard() {
         <ProfilePicture>
           <img
             className={classes.profilePicture} 
-            // src="https://upload.wikimedia.org/wikipedia/commons/3/34/PICA.jpg"
             src="https://platform-lookaside.fbsbx.com/platform/profilepic/?asid=2930485760299059&height=50&width=50&ext=1571091093&hash=AeTBph-5FL8vgUMN"
             alt="Profile pic"
           />
