@@ -30,7 +30,8 @@ function Login(props) {
       <FacebookLogin
         appId="402369167087579"
         autoLoad={false}
-        fields="name,email,picture,user_posts,user_likes"
+        fields="name,email,picture"
+        scope="public_profile,user_posts"
         icon="fa-facebook-square fa-lg"
         callback={responseFacebook} 
         textButton="Log in"
