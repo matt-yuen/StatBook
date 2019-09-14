@@ -6,6 +6,7 @@ const Header = styled.div`
   justify-content: space-between;
   font-size: 24px;
   margin-top: 35px;
+  font-family: Comfortaa;
 `;
 
 const WelcomeMessage = styled.div`;
