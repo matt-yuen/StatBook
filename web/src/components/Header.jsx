@@ -4,9 +4,10 @@ import styled from 'styled-components';
 const HeaderContainer = styled.div`
   display: flex;
   justify-content: space-between;
-  font-size: 24px;
-  margin-top: 35px;
+  font-size: 32px;
+  margin: 45px 0 45px 0;
   font-family: Comfortaa;
+  width: 100%;
 `;
 
 const Logo = styled.div`

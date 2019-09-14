@@ -13,6 +13,7 @@ const LoginContainer = styled.div`
 `;
 
 const Logo = styled.div`
+  font-family: Comfortaa;
   font-size: 56px;
   padding-bottom: 20px;
 `;
