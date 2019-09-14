@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import FacebookLogin from 'react-facebook-login';
 import { withRouter } from 'react-router-dom';
+import { AccessTokenContext } from '../Providers/AccessTokenContextProvider.jsx';
 
 const LoginContainer = styled.div`
   display: flex;
@@ -17,27 +18,33 @@ const Logo = styled.div`
 `;
 
 function Login(props) {
-  const responseFacebook = (response) => {
-    console.log(response);
-    props.history.push('/home', response);
-  }
-
-  return (
-    <LoginContainer>
-      <Logo>
-        StatBook
-      </Logo>
-      <FacebookLogin
-        appId="402369167087579"
-        autoLoad={false}
-        fields="name,email,picture"
-        scope="public_profile,user_posts"
-        icon="fa-facebook-square fa-lg"
-        callback={responseFacebook} 
-        textButton="Log in"
-        version="4.0"
-      />
-    </LoginContainer>
+  return (    
+    <AccessTokenContext.Consumer>
+      {({ setAccessToken }) => {
+        const responseFacebook = (response) => {
+          setAccessToken(response.accessToken);
+          props.history.push('/home', response);
+        };
+        
+        return (
+          <LoginContainer>
+            <Logo>
+              StatBook
+            </Logo>
+            <FacebookLogin
+              appId="402369167087579"
+              autoLoad={false}
+              fields="name,email,picture"
+              scope="public_profile,user_posts"
+              icon="fa-facebook-square fa-lg"
+              callback={responseFacebook} 
+              textButton="Log in"
+              version="4.0"
+            />
+          </LoginContainer>
+        )
+      }}
+    </AccessTokenContext.Consumer>
   )
 }
 
