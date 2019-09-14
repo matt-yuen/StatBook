@@ -36,19 +36,19 @@ const ProfilePicture = styled.div`
 
 function ProfileCard() {
   const classes = useStyles();
-  let token = "";
+  // let token = "";
   
-  axios.get(`https://graph.facebook.com/___?fields=picture`, {
-    headers: {
-      Authorization: 'Bearer ' + token,
-    }
-  })
-  .then(function (response) {
-    console.log(response);
-  })
-  .catch(function (error) {
-    console.log(error);
-  });
+  // axios.get(`https://graph.facebook.com/___?fields=picture`, {
+  //   headers: {
+  //     Authorization: 'Bearer ' + token,
+  //   }
+  // })
+  // .then(function (response) {
+  //   console.log(response);
+  // })
+  // .catch(function (error) {
+  //   console.log(error);
+  // });
 
   return (
     <Card className={classes.card}>
