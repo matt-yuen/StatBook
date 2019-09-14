@@ -1,0 +1,4 @@
+html, body, #app, #app>div, #root {
+  height: 100%;
+  margin: 0;
+}
