@@ -1,4 +1,5 @@
 import React from 'react';
+import Reactions from '../Reactions';
 import styled from 'styled-components';
 import Header from '../Header.jsx'
 import ProfileCard from '../ProfileCard.jsx'
