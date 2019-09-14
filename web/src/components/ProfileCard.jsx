@@ -38,7 +38,7 @@ function ProfileCard() {
   const classes = useStyles();
   let token = process.env.REACT_APP_PAGE_ACCESS_TOKEN;
   
-  axios.get('https://graph.facebook.com/'+ process.env.REACT_APP_PAGE_ID + '?fields=picture', {
+  axios.get('https://graph.facebook.com/'+ process.env.REACT_APP_PAGE_ID + '?fields=name,picture{url},engagement,talking_about_count', {
     headers: {
       Authorization: 'Bearer ' + token,
     }
