@@ -75,8 +75,12 @@ function SuggestionCard() {
   return (
     <Card className={classes.card}>
       <CardContent className={classes.cardContent}>
-        <Title>Suggestions</Title>
-        <Suggestion>Your most popular posts were about: {suggestions}. Try to make more posts like this.</Suggestion>
+        { isLoading
+          ? <Title>Loading content...</Title>
+          : <React.Fragment>
+              <Title>Suggestions</Title>
+              <Suggestion>Your most popular posts were about: {suggestions}. Try to make more posts like this.</Suggestion>
+            </React.Fragment>}
       </CardContent>
     </Card>
   );
