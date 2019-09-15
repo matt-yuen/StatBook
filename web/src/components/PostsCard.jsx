@@ -70,12 +70,6 @@ function PostsCard() {
           ? <Title>Loading content...</Title>
           : <React.Fragment>
               <Title>Posts</Title>
-              {/* {data[1].message}
-              <img
-                className={classes.profilePicture} 
-                src={data[1].picture}
-                alt="Profile pic"
-              /> */}
               <Posts>
                 {getPosts(data)}
               </Posts>
