@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
-import Header from '../Header.jsx'
-import ProfileCard from '../ProfileCard.jsx'
-import ReactionCard from '../ReactionCard.jsx'
+import Header from '../Header.jsx';
+import ProfileCard from '../ProfileCard.jsx';
+import ReactionCard from '../ReactionCard.jsx';
 
 const HomeContainer = styled.div`
   display: flex;
@@ -33,7 +33,7 @@ const TopRightContainer = styled.div`
   width: 50%;
 `;
 
-const ReactionsAndPostStateWrapper = styled.div`
+const ReactionAndPostCardWrapper = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -48,7 +48,9 @@ function Home(props) {
       <TopContainer>
         <TopLeftContainer>
           <ProfileCard />
-          <ReactionsAndPostStateWrapper />
+          <ReactionAndPostCardWrapper>
+            <ReactionCard />
+          </ReactionAndPostCardWrapper>
         </TopLeftContainer>
         <TopRightContainer />
       </TopContainer>

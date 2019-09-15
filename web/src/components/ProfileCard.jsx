@@ -10,6 +10,7 @@ const useStyles = makeStyles({
     display: 'flex',
     flexDirection: 'column',
     padding: '10px',
+    margin: '0 0 20px 0',
   },
   cardContent: {
     display: 'flex',
@@ -79,7 +80,7 @@ function ProfileCard() {
     <Card className={classes.card}>
       <CardContent className={classes.cardContent}>
         { isLoading
-          ? <Title>Loading profile content...</Title>
+          ? <Title>Loading content...</Title>
           : <React.Fragment>
               <Title>Profile</Title>
               <Body>
