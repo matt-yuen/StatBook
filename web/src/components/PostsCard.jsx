@@ -9,7 +9,7 @@ const useStyles = makeStyles({
     width: '100%',
     display: 'flex',
     flexDirection: 'column',
-    padding: '10px 0 10px 0',
+    padding: '10px 0 10px 7px',
     margin: '0 0 0 10px',
   },
   cardContent: {
