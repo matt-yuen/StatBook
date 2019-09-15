@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect} from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
 import { Card, CardContent } from '@material-ui/core';
@@ -29,38 +29,76 @@ const Title = styled.div`
   font-weight: bold;
 `;
 
+const Body = styled.div`
+  display: flex;
+  flex-direction: row;
+  font-family: Comfortaa;
+  font-size: 18px;
+  width: 100%;
+`;
+
 const ProfilePicture = styled.div`
+  min-width: 100px;
+  min-height: 100px;
   width: 100px;
   height: 100px;
+  margin: 0 20px 0 0;
+`;
+
+const StatisticsWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+`;
+
+const Statistic = styled.div`
+  padding: 0 0 10px 0;
 `;
 
 function ProfileCard() {
+  const [data, setData] = useState({});
+  const [isLoading, setIsLoading] = useState(true);
   const classes = useStyles();
-  let token = process.env.REACT_APP_PAGE_ACCESS_TOKEN;
   
-  axios.get('https://graph.facebook.com/'+ process.env.REACT_APP_PAGE_ID + '?fields=name,picture{url},engagement,talking_about_count', {
-    headers: {
-      Authorization: 'Bearer ' + token,
-    }
-  })
-  .then(function (response) {
-    console.log(response);
-  })
-  .catch(function (error) {
-    console.log(error);
-  });
+  useEffect(() => {
+    axios.get('https://graph.facebook.com/'+ process.env.REACT_APP_PAGE_ID + '?fields=name,picture{url},engagement,talking_about_count', {
+      headers: {
+        Authorization: 'Bearer ' + process.env.REACT_APP_PAGE_ACCESS_TOKEN,
+      }
+    })
+    .then(response => {
+      console.log(response.data);
+      setData(response.data);
+      setIsLoading(false);
+    })
+    .catch(error => {
+      console.log(error);
+    });
+  }, [])
 
   return (
     <Card className={classes.card}>
       <CardContent className={classes.cardContent}>
-        <Title>Profile</Title>
-        <ProfilePicture>
-          <img
-            className={classes.profilePicture} 
-            src="https://platform-lookaside.fbsbx.com/platform/profilepic/?asid=2930485760299059&height=50&width=50&ext=1571091093&hash=AeTBph-5FL8vgUMN"
-            alt="Profile pic"
-          />
-        </ProfilePicture>
+        { isLoading
+          ? <Title>Loading profile content...</Title>
+          : <React.Fragment>
+              <Title>Profile</Title>
+              <Body>
+                <ProfilePicture>
+                  <img
+                    className={classes.profilePicture} 
+                    src={data.picture.data.url}
+                    alt="Profile pic"
+                  />
+                </ProfilePicture>
+                <StatisticsWrapper>
+                  <Statistic><b>Name:</b> {data.name}</Statistic>
+                  <Statistic><b>Engagement count:</b> {data.engagement.count}</Statistic>
+                  <Statistic><b>Mentions:</b> {data.talking_about_count}</Statistic>
+                </StatisticsWrapper>
+              </Body>
+            </React.Fragment>
+        }
       </CardContent>
     </Card>
   )
