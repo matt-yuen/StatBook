@@ -62,7 +62,7 @@ function ProfileCard() {
   const classes = useStyles();
   
   useEffect(() => {
-    axios.get('https://graph.facebook.com/'+ process.env.REACT_APP_PAGE_ID + '?fields=name,picture{url},engagement,talking_about_count', {
+    axios.get('https://graph.facebook.com/'+ process.env.REACT_APP_PAGE_ID + '?fields=name,picture{url},fan_count,engagement,talking_about_count', {
       headers: {
         Authorization: 'Bearer ' + process.env.REACT_APP_PAGE_ACCESS_TOKEN,
       }
@@ -93,6 +93,7 @@ function ProfileCard() {
                 </ProfilePicture>
                 <StatisticsWrapper>
                   <Statistic><b>Name:</b> {data.name}</Statistic>
+                  <Statistic><b>Followers :</b> {data.fan_count}</Statistic>
                   <Statistic><b>Engagement count:</b> {data.engagement.count}</Statistic>
                   <Statistic><b>Mentions:</b> {data.talking_about_count}</Statistic>
                 </StatisticsWrapper>
