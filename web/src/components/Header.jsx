@@ -27,7 +27,7 @@ function Header(props) {
   return (    
     <HeaderContainer>
       <WelcomeMessage>
-        Welcome back,&nbsp;<Name>{props.loginResponse.name}</Name>&nbsp;!
+        Welcome back,&nbsp;<Name>Jennifer Campbell</Name>&nbsp;!
       </WelcomeMessage>
       <Logo>
         <img 
