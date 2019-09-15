@@ -3,6 +3,7 @@ import axios from 'axios';
 import styled from 'styled-components';
 import { Card, CardContent } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
+import Post from './Post.jsx'
 
 const useStyles = makeStyles({
   card: {
@@ -14,6 +15,7 @@ const useStyles = makeStyles({
   },
   cardContent: {
     display: 'flex',
+    flexDirection: 'column',
   },
 });
 
@@ -24,6 +26,25 @@ const Title = styled.div`
   padding-bottom: 20px;
   font-weight: bold;
 `;
+
+const Posts = styled.div`
+  width: 100%;
+  max-height: 375px;
+  overflow: scroll;
+  overflow-x: hidden;
+`;
+
+const getPosts = (data) => {
+  return data.map(post => {
+    console.log(post.message);
+    console.log(post.picture);
+
+    if (post.message)
+      return <Post message={post.message} pic={post.picture} />;
+    
+    return <React.Fragment />;
+  })
+}
 
 function PostsCard() {
   const [data, setData] = useState({});
@@ -52,12 +73,15 @@ function PostsCard() {
           ? <Title>Loading content...</Title>
           : <React.Fragment>
               <Title>Posts</Title>
-              {data[1].message}
+              {/* {data[1].message}
               <img
-                    className={classes.profilePicture} 
-                    src={data[1].picture}
-                    alt="Profile pic"
-                  />
+                className={classes.profilePicture} 
+                src={data[1].picture}
+                alt="Profile pic"
+              /> */}
+              <Posts>
+                {getPosts(data)}
+              </Posts>
             </React.Fragment>
         }
       </CardContent>
