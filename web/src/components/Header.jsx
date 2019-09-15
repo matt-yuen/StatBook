@@ -4,23 +4,38 @@ import styled from 'styled-components';
 const HeaderContainer = styled.div`
   display: flex;
   justify-content: space-between;
+  align-items: center;
   font-size: 32px;
-  margin: 45px 0 45px 0;
+  margin: 35px 0 40px 0;
   font-family: Comfortaa;
   width: 100%;
 `;
 
-const Logo = styled.div`
+const WelcomeMessage = styled.div`
+  display: flex;
+  flex-direction: row;
+`;
+
+const Logo = styled.div``;
+
+const Name = styled.div`
+  color: #0033cc;
+  font-weight: bold;
 `;
 
 function Header(props) {
   return (    
     <HeaderContainer>
-      <div>
-        Welcome back, {props.loginResponse.name}!
-      </div>
+      <WelcomeMessage>
+        Welcome back,&nbsp;<Name>{props.loginResponse.name}</Name>!
+      </WelcomeMessage>
       <Logo>
-        StatBook
+        <img 
+          src={require('../images/logo.png')}
+          alt="Logo"
+          width="225"
+          height="85"
+        />
       </Logo>
     </HeaderContainer>
   )
