@@ -204,6 +204,12 @@ function ReactionCard() {
                     value: data.angrySum,
                     color: '#000066'
                   }]}
+                  label
+                  labelStyle={{
+                    fontSize: '8px',
+                    fontFamily: 'Comfortaa',
+                    fill: '#121212'
+                  }}
                   animate
                 />
                 <Legend>
