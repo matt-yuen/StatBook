@@ -1,21 +1,21 @@
-import React, { useState, useEffect} from 'react';
-import axios from 'axios';
-import styled from 'styled-components';
-import { Card, CardContent } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import styled from "styled-components";
+import { Card, CardContent } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles({
   card: {
-    width: '100%',
-    height: '100%',
-    display: 'flex',
-    flexDirection: 'column',
-    padding: '10px 0 10px 7px',
-    margin: '0 0 15px 10px',
+    width: "100%",
+    height: "100%",
+    display: "flex",
+    flexDirection: "column",
+    padding: "10px 0 10px 7px",
+    margin: "0 0 15px 10px",
   },
   cardContent: {
-    display: 'flex',
-    flexDirection: 'column',
+    display: "flex",
+    flexDirection: "column",
   },
 });
 
@@ -31,35 +31,53 @@ const Suggestion = styled.div`
   font-family: Comfortaa;
   font-size: 16px;
   width: 100%;
-  padding: 0 0 20px 0;  
+  padding: 0 0 20px 0;
 `;
 
 function SuggestionCard() {
-  // const [data, setData] = useState({});
-  // const [isLoading, setIsLoading] = useState(true);
+  const [suggestions, setSuggestions] = useState([]);
   const classes = useStyles();
 
-  // useEffect(() => {
-  //   axios.get('')
-  //   .then(response => {
-  //     setData(response.data);
-  //     setIsLoading(false);
-  //   })
-  //   .catch(error => {
-  //     console.log(error);
-  //   });
-  // }, [])
+  useEffect(() => {
+    axios
+      .get(
+        "https://graph.facebook.com/" +
+          process.env.REACT_APP_PAGE_ID +
+          "/posts?fields=id,message,comments",
+        {
+          headers: {
+            Authorization: "Bearer " + process.env.REACT_APP_PAGE_ACCESS_TOKEN,
+          },
+        },
+      )
+      .then(response => {
+        axios
+          .post(
+            "https://thawing-fjord-78969.herokuapp.com/posts",
+            response.data.data,
+          )
+          .then(function(response) {
+            let topics = response.data.suggestedTopics;
+            topics = topics.join(', ');
+            setSuggestions(topics);
+          })
+          .catch(function(error) {
+            console.log(error);
+          });
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  });
 
   return (
     <Card className={classes.card}>
       <CardContent className={classes.cardContent}>
-        <Title>
-          Suggestions
-        </Title>
-        {/* <Suggestion>{data.suggestion}</Suggestion> */}
+        <Title>Suggestions</Title>
+        <Suggestion>Your most popular posts were about: {suggestions}. Try to make more posts like this.</Suggestion>
       </CardContent>
     </Card>
-  )
+  );
 }
 
-export default SuggestionCard
+export default SuggestionCard;
