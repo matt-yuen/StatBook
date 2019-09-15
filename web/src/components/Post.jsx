@@ -10,7 +10,7 @@ const useStyles = makeStyles({
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'center',
-    alignItems: 'center',
+    alignItems: 'flex-start',
     padding: '15px',
     margin: '10px 10px 10px 0',
   },
