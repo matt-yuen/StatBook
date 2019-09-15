@@ -35,7 +35,7 @@ const Posts = styled.div`
 `;
 
 const getPosts = (data, sentiments) => {
-
+  console.log(sentiments);
   return data.map((post, i) => {
     let score = sentiments[i];
     if (post.message)
@@ -58,7 +58,7 @@ function PostsCard() {
       }
     })
     .then(response => {
-      axios.post('https://staticbook-back-end.herokuapp.com/posts', response.data.data)
+      axios.post('https://thawing-fjord-78969.herokuapp.com/posts', response.data.data)
       .then(function (response) {
         let sentiments = response.data.sentiments;
 
