@@ -15,10 +15,9 @@ app.post('/posts', (req, res) => {
   let data;
   const recommendationEngine = new RecommendationEngine();
 
-  const suggestions = recommendationEngine.createSuggestions(req.body).then(res =>{
-    console.log(res);
+  const suggestions = recommendationEngine.createSuggestions(req.body).then(resp =>{
+    res.json(resp);
   });
-  res.json(suggestions);
 });
 
 app.listen(HTTP_PORT, () => console.log('Server listening on port 8080!'));
