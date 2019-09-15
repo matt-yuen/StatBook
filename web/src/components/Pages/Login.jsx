@@ -9,12 +9,13 @@ const LoginContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 70%;
+  height: 85%;
 `;
 
 const Logo = styled.div`
   font-family: Comfortaa;
   font-size: 56px;
+  margin-bottom: 20px;
 `;
 
 function Login(props) {
@@ -34,6 +35,7 @@ function Login(props) {
                 alt="Logo"
                 width="575"
                 height="225"
+                style={{borderRadius: "10px"}}
               />
             </Logo>
             <FacebookLogin

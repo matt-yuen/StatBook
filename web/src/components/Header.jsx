@@ -35,6 +35,7 @@ function Header(props) {
           alt="Logo"
           width="250"
           height="95"
+          style={{borderRadius: "10px"}}
         />
       </Logo>
     </HeaderContainer>
