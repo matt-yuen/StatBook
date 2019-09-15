@@ -1,4 +1,5 @@
 const axios = require("axios");
+
 const AZURE_SENTIMENT_URL =
   "https://statbookcognitiveservicesresource.cognitiveservices.azure.com/text/analytics/v2.1/sentiment";
 const AZURE_KEY_PHRASES_URL =
@@ -7,6 +8,9 @@ const AZURE_KEY_PHRASES_URL =
 class RecommendationEngine {
   constructor() {
     this.postsMap = new Map();
+    this.sortedPosts = [];
+    this.popularTopics = [];
+    this.unpopularTopics = [];
   }
 
   processPosts(posts) {
@@ -14,9 +18,7 @@ class RecommendationEngine {
       posts.forEach(post => {
         this.postsMap.set(post.id, post);
 
-        this.getKeyPhrases(post).then(() => {
-          console.log(this.postsMap);
-        });
+        this.getKeyPhrases(post);
         if (post.comments) {
           let comments = [];
           post.comments.forEach(comment => {
@@ -35,11 +37,30 @@ class RecommendationEngine {
               this.postsMap.forEach((value, key, map) => {
                 processedPosts.push(value);
               });
+              this.sortPostsBySentimentScore();
               resolve(processedPosts);
             });
         }
       });
     });
+  }
+
+  sortPostsBySentimentScore() {
+    this.sortedPosts = Array.from(this.postsMap.values()).sort(
+      (post1, post2) => {
+        return post1.avgSentimentScore > post2.avgSentimentScore;
+      },
+    );
+    console.log("Sorted posts: ");
+    console.log(this.sortedPosts);
+  }
+
+  identifyTopPosts() {
+
+  }
+
+  createSuggestions() {
+    
   }
 
   getKeyPhrases(post) {
@@ -92,7 +113,6 @@ class RecommendationEngine {
         .then(res => {
           let sum = 0;
           res.data.documents.forEach(sentiment => {
-            console.log(sentiment.score);
             sum += sentiment.score;
           });
           const avgSentimentScore = sum / res.data.documents.length;
