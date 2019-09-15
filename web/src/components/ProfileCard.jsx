@@ -7,9 +7,10 @@ import { makeStyles } from '@material-ui/core/styles';
 const useStyles = makeStyles({
   card: {
     width: '100%',
+    height: '100%',
     display: 'flex',
     flexDirection: 'column',
-    padding: '10px',
+    padding: '10px 0 10px 10px',
     margin: '0 0 20px 0',
   },
   cardContent: {

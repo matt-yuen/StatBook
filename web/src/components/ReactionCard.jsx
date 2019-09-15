@@ -7,10 +7,10 @@ import PieChart from 'react-minimal-pie-chart';
 
 const useStyles = makeStyles({
   card: {
-    // width: '50%',
+    width: '100%',
     display: 'flex',
     flexDirection: 'column',
-    padding: '10px',
+    padding: '10px 0 10px 10px',
   },
   cardContent: {
     display: 'flex',
@@ -29,6 +29,7 @@ const Title = styled.div`
 const Body = styled.div`
   display: flex;
   flex-direction: row;
+  justify-content: center;
   font-family: Comfortaa;
   font-size: 18px;
   width: 100%;

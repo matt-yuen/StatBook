@@ -1,13 +1,16 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import styled from 'styled-components';
 import { Card, CardContent } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles({
   card: {
-    width: "100%",
-    display: "flex",
-    flexDirection: "column",
-    padding: "10px",
+    width: '100%',
+    display: 'flex',
+    flexDirection: 'column',
+    padding: '10px 0 10px 0',
+    margin: '0 0 0 10px',
   },
   cardContent: {
     display: 'flex',
@@ -43,12 +46,12 @@ function PostsCard() {
   }, [])
 
   return (
-    <Card>
+    <Card className={classes.card}>
       <CardContent className={classes.cardContent}>
         { isLoading
-          ? <Title>Loading profile content...</Title>
+          ? <Title>Loading content...</Title>
           : <React.Fragment>
-              <Title>Profile</Title>
+              <Title>Posts</Title>
             </React.Fragment>
         }
       </CardContent>
