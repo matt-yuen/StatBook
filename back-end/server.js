@@ -1,10 +1,13 @@
 const express = require('express');
 const axios = require('axios');
+var cors = require('cors')
+
 const RecommendationEngine = require('./RecommendationEngine');
 
 const app = express();
+const HTTP_PORT = process.env.PORT || 8080;
 app.use(express.json());
-
+app.use(cors());
 
 app.get('/', (req, res) => {
   res.send('StatBook back-end');
@@ -13,11 +16,10 @@ app.get('/', (req, res) => {
 app.post('/posts', (req, res) => {
   let data;
   const recommendationEngine = new RecommendationEngine();
-  recommendationEngine.processPosts(req.body).then((response) => {
-    console.log("SENDING");
-    console.log(response);
-    res.json(response);
+
+  const suggestions = recommendationEngine.createSuggestions(req.body).then(resp =>{
+    res.json(resp);
   });
 });
 
-app.listen(8080, () => console.log('Server listening on port 8080!'));
+app.listen(HTTP_PORT, () => console.log('Server listening on port 8080!'));
