@@ -15,7 +15,6 @@ const LoginContainer = styled.div`
 const Logo = styled.div`
   font-family: Comfortaa;
   font-size: 56px;
-  padding-bottom: 20px;
 `;
 
 function Login(props) {
@@ -30,7 +29,12 @@ function Login(props) {
         return (
           <LoginContainer>
             <Logo>
-              StatBook
+              <img 
+                src={require('../../images/logo.png')}
+                alt="Logo"
+                width="575"
+                height="225"
+              />
             </Logo>
             <FacebookLogin
               appId="402369167087579"
