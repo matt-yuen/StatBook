@@ -10,8 +10,8 @@ const useStyles = makeStyles({
     height: "100%",
     display: "flex",
     flexDirection: "column",
-    padding: "10px 0 10px 7px",
-    margin: "0 0 15px 10px",
+    padding: "10px 0 0px 7px",
+    margin: "0 0 0 10px",
   },
   cardContent: {
     display: "flex",
@@ -36,6 +36,7 @@ const Suggestion = styled.div`
 
 function SuggestionCard() {
   const [suggestions, setSuggestions] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
   const classes = useStyles();
 
   useEffect(() => {
@@ -60,6 +61,7 @@ function SuggestionCard() {
             let topics = response.data.suggestedTopics;
             topics = topics.join(', ');
             setSuggestions(topics);
+            setIsLoading(false);
           })
           .catch(function(error) {
             console.log(error);
