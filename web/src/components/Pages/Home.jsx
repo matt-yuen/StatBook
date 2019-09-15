@@ -8,7 +8,7 @@ const HomeContainer = styled.div`
   flex-direction: column;
 `;
 
-const LeftRightWrapper = styled.div`
+const TopContainer = styled.div`
   display: flex;
   flex-direction: row;
   justify-content:center;
@@ -16,7 +16,7 @@ const LeftRightWrapper = styled.div`
   width: 100%;
 `;
 
-const LeftContainer = styled.div`
+const TopLeftContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -24,7 +24,7 @@ const LeftContainer = styled.div`
   width: 50%;
 `;
 
-const RightContainer = styled.div`
+const TopRightContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -44,13 +44,13 @@ function Home(props) {
   return (
     <HomeContainer>
       <Header loginResponse={props.location.state} />
-      <LeftRightWrapper>
-        <LeftContainer>
+      <TopContainer>
+        <TopLeftContainer>
           <ProfileCard />
           <ReactionsAndPostStateWrapper />
-        </LeftContainer>
-        <RightContainer />
-      </LeftRightWrapper>
+        </TopLeftContainer>
+        <TopRightContainer />
+      </TopContainer>
     </HomeContainer>
   )
 }

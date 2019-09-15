@@ -33,8 +33,8 @@ function Header(props) {
         <img 
           src={require('../images/logo.png')}
           alt="Logo"
-          width="225"
-          height="85"
+          width="250"
+          height="95"
         />
       </Logo>
     </HeaderContainer>
