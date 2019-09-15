@@ -26,13 +26,14 @@ const PostContent = styled.div`
   width: 100%;
   justify-content: center;
   align-items: center;
+  padding: 0 20px 0 0;
 `;
 
 const Message = styled.div`
   font-family: Comfortaa;
   font-size: 16px;
   width: 100%;
-  padding: 0 15px 20px 0;
+  padding: 0 0 20px 0;
 `;
 
 function Post(props) {
@@ -42,6 +43,9 @@ function Post(props) {
     <Card className={classes.card} >
       <PostContent>
         <Message>{props.message}</Message>
+        <Progress
+          percent={88}
+        />
       </PostContent>
       <img 
         className={classes.postPicture} 
