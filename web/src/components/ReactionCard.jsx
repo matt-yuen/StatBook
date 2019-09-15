@@ -86,7 +86,7 @@ const LegendKeyHaha = styled.div`
   font-size: 18px;
   width: 20px;
   height: 20px;
-  background-color: #003399;
+  background-color: #34baeb;
 `;
 
 const LegendKeyWow = styled.div`
@@ -113,7 +113,7 @@ const LegendKeyAngry = styled.div`
   font-size: 18px;
   width: 20px;
   height: 20px;
-  background-color: #000066;
+  background-color: #000000;
 `;
 
 function ReactionCard() {
@@ -190,7 +190,7 @@ function ReactionCard() {
                   }, {
                     title: '😂',
                     value: data.hahaSum,
-                    color: '#003399'
+                    color: '#34baeb'
                   }, {
                     title: '😮',
                     value: data.wowSum,
@@ -202,7 +202,7 @@ function ReactionCard() {
                   }, {
                     title: '😠',
                     value: data.angrySum,
-                    color: '#000066'
+                    color: '#000000'
                   }]}
                   label
                   labelStyle={{
