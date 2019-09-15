@@ -31,13 +31,13 @@ function PostsCard() {
   const classes = useStyles();
   
   useEffect(() => {
-    axios.get('https://graph.facebook.com/'+ process.env.REACT_APP_PAGE_ID + '?fields=name,picture{url},engagement,talking_about_count', {
+    axios.get('https://graph.facebook.com/'+ process.env.REACT_APP_PAGE_ID + '/posts?fields=message,picture,hyperlink', {
       headers: {
         Authorization: 'Bearer ' + process.env.REACT_APP_PAGE_ACCESS_TOKEN,
       }
     })
     .then(response => {
-      setData(response.data);
+      setData(response.data.data);
       setIsLoading(false);
     })
     .catch(error => {
@@ -52,6 +52,12 @@ function PostsCard() {
           ? <Title>Loading content...</Title>
           : <React.Fragment>
               <Title>Posts</Title>
+              {data[1].message}
+              <img
+                    className={classes.profilePicture} 
+                    src={data[1].picture}
+                    alt="Profile pic"
+                  />
             </React.Fragment>
         }
       </CardContent>
