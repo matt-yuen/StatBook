@@ -14,8 +14,6 @@ app.post('/posts', (req, res) => {
   let data;
   const recommendationEngine = new RecommendationEngine();
   recommendationEngine.processPosts(req.body).then((response) => {
-    console.log("SENDING");
-    console.log(response);
     res.json(response);
   });
 });
