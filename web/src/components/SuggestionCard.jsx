@@ -79,7 +79,7 @@ function SuggestionCard() {
           ? <Title>Loading content...</Title>
           : <React.Fragment>
               <Title>Suggestions</Title>
-              <Suggestion>Your most popular posts were about: {suggestions}. Try to make more posts like this.</Suggestion>
+              <Suggestion>Your most popular posts were about: <b>{suggestions}</b>. Try to make more posts like this.</Suggestion>
             </React.Fragment>}
       </CardContent>
     </Card>
