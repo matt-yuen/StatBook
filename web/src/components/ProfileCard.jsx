@@ -67,7 +67,6 @@ function ProfileCard() {
       }
     })
     .then(response => {
-      console.log(response.data);
       setData(response.data);
       setIsLoading(false);
     })
