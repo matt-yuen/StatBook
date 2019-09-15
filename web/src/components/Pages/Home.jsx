@@ -4,6 +4,7 @@ import Header from '../Header.jsx';
 import ProfileCard from '../ProfileCard.jsx';
 import ReactionCard from '../ReactionCard.jsx';
 import PostsCard from '../PostsCard.jsx';
+import SuggestionCard from '../SuggestionCard.jsx';
 
 const HomeContainer = styled.div`
   display: flex;
@@ -46,6 +47,7 @@ function Home(props) {
         </TopLeftContainer>
         <TopRightContainer>
           <PostsCard />
+          <SuggestionCard />
         </TopRightContainer>
       </TopContainer>
     </HomeContainer>

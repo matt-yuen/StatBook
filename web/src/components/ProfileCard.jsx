@@ -11,7 +11,7 @@ const useStyles = makeStyles({
     display: 'flex',
     flexDirection: 'column',
     padding: '10px 0 10px 7px',
-    margin: '0 0 20px 0',
+    margin: '0 0 15px 0',
   },
   cardContent: {
     display: 'flex',
