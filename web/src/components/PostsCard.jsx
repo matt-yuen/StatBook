@@ -37,7 +37,7 @@ const Posts = styled.div`
 const getPosts = (data) => {
   return data.map((post, i) => {
     if (post.message)
-      return <Post key={i} message={post.message} pic={post.picture} />;
+      return <Post key={i} message={post.message} pic={post.picture} link={post.permalink_url} />;
     
     return <React.Fragment key={i} />;
   })
@@ -49,7 +49,7 @@ function PostsCard() {
   const classes = useStyles();
   
   useEffect(() => {
-    axios.get('https://graph.facebook.com/'+ process.env.REACT_APP_PAGE_ID + '/posts?fields=message,picture,hyperlink', {
+    axios.get('https://graph.facebook.com/'+ process.env.REACT_APP_PAGE_ID + '/posts?fields=message,picture,permalink_url', {
       headers: {
         Authorization: 'Bearer ' + process.env.REACT_APP_PAGE_ACCESS_TOKEN,
       }

@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Card } from '@material-ui/core';
+import { Card, CardActionArea } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import { Progress } from 'react-sweet-progress';
 import "react-sweet-progress/lib/style.css";
@@ -19,6 +19,10 @@ const useStyles = makeStyles({
     height: '75px',
   },
 })
+
+const Link = styled.a`
+  text-decoration: none;
+`;
 
 const PostContent = styled.div`
   display: flex;
@@ -40,19 +44,23 @@ function Post(props) {
   const classes = useStyles();
 
   return (
-    <Card className={classes.card} >
-      <PostContent>
-        <Message>{props.message}</Message>
-        <Progress
-          percent={88}
-        />
-      </PostContent>
-      <img 
-        className={classes.postPicture} 
-        src={props.pic}
-        alt="Post pic"
-      />
-    </Card>
+    <Link href={props.link}>
+      <CardActionArea>
+        <Card className={classes.card} >
+            <PostContent>
+              <Message>{props.message}</Message>
+              <Progress
+                percent={88}
+              />
+            </PostContent>
+            <img 
+              className={classes.postPicture} 
+              src={props.pic}
+              alt="Post pic"
+            />
+        </Card>
+      </CardActionArea>
+    </Link>
   );
 }
 
