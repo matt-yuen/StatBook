@@ -1,7 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Card, CardContent } from '@material-ui/core';
+import { Card } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
+import { Progress } from 'react-sweet-progress';
+import "react-sweet-progress/lib/style.css";
 
 const useStyles = makeStyles({
   card: {
@@ -18,6 +20,14 @@ const useStyles = makeStyles({
   },
 })
 
+const PostContent = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+`;
+
 const Message = styled.div`
   font-family: Comfortaa;
   font-size: 16px;
@@ -30,7 +40,9 @@ function Post(props) {
 
   return (
     <Card className={classes.card} >
-      <Message>{props.message}</Message>
+      <PostContent>
+        <Message>{props.message}</Message>
+      </PostContent>
       <img 
         className={classes.postPicture} 
         src={props.pic}
