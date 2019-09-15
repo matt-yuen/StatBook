@@ -4,8 +4,11 @@ const RecommendationEngine = require('./RecommendationEngine');
 
 const app = express();
 const HTTP_PORT = process.env.PORT || 8080;
-app.use(express.json());
-
+app.use(() => {
+  express.json();
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+});
 
 app.get('/', (req, res) => {
   res.send('StatBook back-end');
