@@ -208,7 +208,7 @@ function ReactionCard() {
                   labelStyle={{
                     fontSize: '8px',
                     fontFamily: 'Comfortaa',
-                    fill: '#121212'
+                    fill: '#FFFFFF'
                   }}
                   animate
                 />
