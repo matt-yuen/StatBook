@@ -49,6 +49,24 @@ function PostsCard() {
   const classes = useStyles();
   
   useEffect(() => {
+    axios.get('https://graph.facebook.com/'+ process.env.REACT_APP_PAGE_ID + '/posts?fields=id,message,comments', {
+      headers: {
+        Authorization: 'Bearer ' + process.env.REACT_APP_PAGE_ACCESS_TOKEN,
+      }
+    })
+    .then(response => {
+      axios.post('https://staticbook-back-end.herokuapp.com/posts', response.data.data)
+      .then(function (response) {
+        console.log(response.data);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+    })
+    .catch(error => {
+      console.log(error);
+    });
+
     axios.get('https://graph.facebook.com/'+ process.env.REACT_APP_PAGE_ID + '/posts?fields=message,picture,permalink_url', {
       headers: {
         Authorization: 'Bearer ' + process.env.REACT_APP_PAGE_ACCESS_TOKEN,

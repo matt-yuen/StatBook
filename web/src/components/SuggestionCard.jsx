@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState, useEffect} from 'react';
+import axios from 'axios';
 import styled from 'styled-components';
 import { Card, CardContent } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
@@ -34,7 +35,20 @@ const Suggestion = styled.div`
 `;
 
 function SuggestionCard() {
+  // const [data, setData] = useState({});
+  // const [isLoading, setIsLoading] = useState(true);
   const classes = useStyles();
+
+  // useEffect(() => {
+  //   axios.get('')
+  //   .then(response => {
+  //     setData(response.data);
+  //     setIsLoading(false);
+  //   })
+  //   .catch(error => {
+  //     console.log(error);
+  //   });
+  // }, [])
 
   return (
     <Card className={classes.card}>
@@ -42,7 +56,7 @@ function SuggestionCard() {
         <Title>
           Suggestions
         </Title>
-        <Suggestion>TESTING 1</Suggestion>
+        {/* <Suggestion>{data.suggestion}</Suggestion> */}
       </CardContent>
     </Card>
   )
