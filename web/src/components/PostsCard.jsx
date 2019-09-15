@@ -34,10 +34,12 @@ const Posts = styled.div`
   overflow-x: hidden;
 `;
 
-const getPosts = (data) => {
+const getPosts = (data, sentiments) => {
+
   return data.map((post, i) => {
+    let score = sentiments[i];
     if (post.message)
-      return <Post key={i} message={post.message} pic={post.picture} link={post.permalink_url} />;
+      return <Post key={i} message={post.message} pic={post.picture} link={post.permalink_url} score={score} />;
     
     return <React.Fragment key={i} />;
   })
@@ -45,6 +47,7 @@ const getPosts = (data) => {
 
 function PostsCard() {
   const [data, setData] = useState({});
+  const [sentiments, setSentiments] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const classes = useStyles();
   
@@ -57,7 +60,14 @@ function PostsCard() {
     .then(response => {
       axios.post('https://staticbook-back-end.herokuapp.com/posts', response.data.data)
       .then(function (response) {
-        console.log(response.data);
+        let sentiments = response.data.sentiments;
+
+        let scores = [];
+        for (const sentiment of sentiments) {
+          scores.push(sentiment.sentimentScore);
+        }
+        console.log(scores);
+        setSentiments(scores);
       })
       .catch(function (error) {
         console.log(error);
@@ -74,6 +84,7 @@ function PostsCard() {
     })
     .then(response => {
       setData(response.data.data);
+      // console.log(response.data.data);
       setIsLoading(false);
     })
     .catch(error => {
@@ -89,7 +100,7 @@ function PostsCard() {
           : <React.Fragment>
               <Title>Posts</Title>
               <Posts>
-                {getPosts(data)}
+                {getPosts(data, sentiments)}
               </Posts>
             </React.Fragment>
         }
