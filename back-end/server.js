@@ -3,6 +3,7 @@ const axios = require('axios');
 const RecommendationEngine = require('./RecommendationEngine');
 
 const app = express();
+const HTTP_PORT = process.env.PORT || 8080;
 app.use(express.json());
 
 
@@ -20,4 +21,4 @@ app.post('/posts', (req, res) => {
   });
 });
 
-app.listen(8080, () => console.log('Server listening on port 8080!'));
+app.listen(HTTP_PORT, () => console.log('Server listening on port 8080!'));
