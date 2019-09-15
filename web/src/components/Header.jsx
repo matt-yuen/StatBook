@@ -27,7 +27,7 @@ function Header(props) {
   return (    
     <HeaderContainer>
       <WelcomeMessage>
-        Welcome back,&nbsp;<Name>{props.loginResponse.name}</Name>!
+        Welcome back,&nbsp;<Name>Jennifer Campbell</Name>&nbsp;!
       </WelcomeMessage>
       <Logo>
         <img 
@@ -35,6 +35,7 @@ function Header(props) {
           alt="Logo"
           width="250"
           height="95"
+          style={{borderRadius: "10px"}}
         />
       </Logo>
     </HeaderContainer>

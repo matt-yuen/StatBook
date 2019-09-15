@@ -3,6 +3,8 @@ import styled from 'styled-components';
 import Header from '../Header.jsx';
 import ProfileCard from '../ProfileCard.jsx';
 import ReactionCard from '../ReactionCard.jsx';
+import PostsCard from '../PostsCard.jsx';
+import SuggestionCard from '../SuggestionCard.jsx';
 
 const HomeContainer = styled.div`
   display: flex;
@@ -12,8 +14,8 @@ const HomeContainer = styled.div`
 const TopContainer = styled.div`
   display: flex;
   flex-direction: row;
-  justify-content:center;
-  align-items:row;
+  justify-content: center;
+  align-items: flex-start;
   width: 100%;
 `;
 
@@ -23,6 +25,7 @@ const TopLeftContainer = styled.div`
   justify-content: center;
   align-items: center;
   width: 50%;
+  margin: 0 15px 0 0;
 `;
 
 const TopRightContainer = styled.div`
@@ -33,14 +36,6 @@ const TopRightContainer = styled.div`
   width: 50%;
 `;
 
-const ReactionAndPostCardWrapper = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-`;
-
 function Home(props) {
   return (
     <HomeContainer>
@@ -48,11 +43,12 @@ function Home(props) {
       <TopContainer>
         <TopLeftContainer>
           <ProfileCard />
-          <ReactionAndPostCardWrapper>
-            <ReactionCard />
-          </ReactionAndPostCardWrapper>
+          <ReactionCard />
         </TopLeftContainer>
-        <TopRightContainer />
+        <TopRightContainer>
+          <PostsCard />
+          <SuggestionCard />
+        </TopRightContainer>
       </TopContainer>
     </HomeContainer>
   )

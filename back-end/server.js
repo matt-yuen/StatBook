@@ -14,11 +14,11 @@ app.get('/', (req, res) => {
 app.post('/posts', (req, res) => {
   let data;
   const recommendationEngine = new RecommendationEngine();
-  recommendationEngine.processPosts(req.body).then((response) => {
-    console.log("SENDING");
-    console.log(response);
-    res.json(response);
+
+  const suggestions = recommendationEngine.createSuggestions(req.body).then(res =>{
+    console.log(res);
   });
+  res.json(suggestions);
 });
 
 app.listen(HTTP_PORT, () => console.log('Server listening on port 8080!'));

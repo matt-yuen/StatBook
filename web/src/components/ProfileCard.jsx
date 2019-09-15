@@ -7,10 +7,11 @@ import { makeStyles } from '@material-ui/core/styles';
 const useStyles = makeStyles({
   card: {
     width: '100%',
+    height: '100%',
     display: 'flex',
     flexDirection: 'column',
-    padding: '10px',
-    margin: '0 0 20px 0',
+    padding: '10px 0 10px 7px',
+    margin: '0 0 15px 0',
   },
   cardContent: {
     display: 'flex',
@@ -33,16 +34,18 @@ const Title = styled.div`
 const Body = styled.div`
   display: flex;
   flex-direction: row;
+  justify-content: center;
+  align-items: center;
   font-family: Comfortaa;
   font-size: 18px;
   width: 100%;
 `;
 
 const ProfilePicture = styled.div`
-  min-width: 100px;
-  min-height: 100px;
-  width: 100px;
-  height: 100px;
+  min-width: 130px;
+  min-height: 130px;
+  width: 130px;
+  height: 130px;
   margin: 0 20px 0 0;
 `;
 
@@ -89,6 +92,7 @@ function ProfileCard() {
                     className={classes.profilePicture} 
                     src={data.picture.data.url}
                     alt="Profile pic"
+                    style={{ borderRadius: '10px' }}
                   />
                 </ProfilePicture>
                 <StatisticsWrapper>

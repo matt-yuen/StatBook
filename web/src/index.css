@@ -8,6 +8,7 @@ html, body, #app, #app>div, #root {
 body {
   display: flex;
   justify-content: center;
+  background-color: #abd0ef;
 }
 
 #root {
