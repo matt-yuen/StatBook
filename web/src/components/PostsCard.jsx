@@ -35,11 +35,11 @@ const Posts = styled.div`
 `;
 
 const getPosts = (data) => {
-  return data.map(post => {
+  return data.map((post, i) => {
     if (post.message)
-      return <Post key={post.message} message={post.message} pic={post.picture} />;
+      return <Post key={i} message={post.message} pic={post.picture} />;
     
-    return <React.Fragment />;
+    return <React.Fragment key={i} />;
   })
 }
 
