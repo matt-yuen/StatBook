@@ -3,10 +3,11 @@ import axios from 'axios';
 import styled from 'styled-components';
 import { Card, CardContent } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
+import PieChart from 'react-minimal-pie-chart';
 
 const useStyles = makeStyles({
   card: {
-    width: '50%',
+    // width: '50%',
     display: 'flex',
     flexDirection: 'column',
     padding: '10px',
@@ -23,6 +24,95 @@ const Title = styled.div`
   width: 100%;
   padding-bottom: 20px;
   font-weight: bold;
+`;
+
+const Body = styled.div`
+  display: flex;
+  flex-direction: row;
+  font-family: Comfortaa;
+  font-size: 18px;
+  width: 100%;
+`;
+
+const Legend = styled.div`
+  display: flex;
+  flex-direction: row;
+  font-family: Comfortaa;
+  font-size: 18px;
+  align-items: center;
+  justify-content: center;
+  padding: 0 0 0 45px;
+`;
+
+const LegendValuesContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+const LegendValue = styled.div`
+  padding: 0 0 10px 0;
+  font-family: Comfortaa;
+  font-size: 18px;
+`;
+
+const LegendKeysContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  padding: 0 20px 0 0;
+`;
+
+const LegendKeyLike = styled.div`
+  margin: 0 0 10px 0;
+  font-family: Comfortaa;
+  font-size: 18px;
+  width: 20px;
+  height: 20px;
+  background-color: #6699ff;
+`;
+
+const LegendKeyLove = styled.div`
+  margin: 0 0 10px 0;
+  font-family: Comfortaa;
+  font-size: 18px;
+  width: 20px;
+  height: 20px;
+  background-color: #006699;
+`;
+
+const LegendKeyHaha = styled.div`
+  margin: 0 0 10px 0;
+  font-family: Comfortaa;
+  font-size: 18px;
+  width: 20px;
+  height: 20px;
+  background-color: #003399;
+`;
+
+const LegendKeyWow = styled.div`
+  margin: 0 0 10px 0;
+  font-family: Comfortaa;
+  font-size: 18px;
+  width: 20px;
+  height: 20px;
+  background-color: #0099ff;
+`;
+
+const LegendKeySad = styled.div`
+  margin: 0 0 10px 0;
+  font-family: Comfortaa;
+  font-size: 18px;
+  width: 20px;
+  height: 20px;
+  background-color: #000099;
+`;
+
+const LegendKeyAngry = styled.div`
+  margin: 0 0 10px 0;
+  font-family: Comfortaa;
+  font-size: 18px;
+  width: 20px;
+  height: 20px;
+  background-color: #000066;
 `;
 
 function ReactionCard() {
@@ -86,6 +176,54 @@ function ReactionCard() {
           ? <Title>Loading content...</Title>
           : <React.Fragment>
               <Title>Reactions</Title>
+              <Body>
+                <PieChart
+                  data={[{
+                    title: '👍',
+                    value: data.likeSum,
+                    color: '#6699ff'
+                  }, {
+                    title: '❤️',
+                    value: data.loveSum,
+                    color: '#006699'
+                  }, {
+                    title: '😂',
+                    value: data.hahaSum,
+                    color: '#003399'
+                  }, {
+                    title: '😮',
+                    value: data.wowSum,
+                    color: '#0099ff'
+                  }, {
+                    title: '😢',
+                    value: data.sadSum,
+                    color: '#000099'
+                  }, {
+                    title: '😠',
+                    value: data.angrySum,
+                    color: '#000066'
+                  }]}
+                  animate
+                />
+                <Legend>
+                  <LegendKeysContainer>
+                    <LegendKeyLike />
+                    <LegendKeyLove />
+                    <LegendKeyHaha />
+                    <LegendKeyWow />
+                    <LegendKeySad />
+                    <LegendKeyAngry />
+                  </LegendKeysContainer>
+                  <LegendValuesContainer>
+                    <LegendValue>👍</LegendValue>
+                    <LegendValue>️️️️️️️️️️️❤️</LegendValue>
+                    <LegendValue>😂</LegendValue>
+                    <LegendValue>😮</LegendValue>
+                    <LegendValue>😢</LegendValue>
+                    <LegendValue>😠</LegendValue>
+                  </LegendValuesContainer>
+                </Legend>
+              </Body>
             </React.Fragment>
         }
       </CardContent>
